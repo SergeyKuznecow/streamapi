@@ -27,7 +27,11 @@ public class Solution {
     }
 
     private static Long allReadingTasks(List<List<Task>> tasks) {
-        return null;
+
         // Ваш код здесь
+        return tasks.stream()
+                .flatMap(Collection::stream)//преобразует каждый список задач в поток задач и объединяет все эти потоки в один.
+                .filter(task -> task.getTags().contains("books"))// фильтрует задачи, оставляя только те, у которых есть тег "books".
+                .count();
     }
 }

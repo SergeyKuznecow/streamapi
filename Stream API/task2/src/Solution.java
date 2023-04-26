@@ -2,12 +2,14 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
 
     /**
-    *Найдите только уникальные задачи со статусом READING
-    *Решить необходимо в 1 stream.
+    * Найдите только уникальные задачи со статусом READING
+    * Решить необходимо в 1 stream.
+    * Правильный ответ: task1, task2, task5
     */
 
     public static void main(String[] args) {
@@ -22,7 +24,11 @@ public class Solution {
     }
 
     private static List<Task> allReadingTasks(List<Task> tasks) {
-        return null;
+
         // Ваш код здесь
+        return tasks.stream()
+                .filter(task -> task.getType() == TaskType.READING)
+                .distinct()
+                .collect(Collectors.toList());
     }
 }

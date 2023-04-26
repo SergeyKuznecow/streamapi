@@ -2,12 +2,14 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Solution {
 
     /**
-    *Найдите все уникальные теги из всех задач
-    *Решить необходимо в 1 stream.
+    * Найдите все уникальные теги из всех задач
+    * Решить необходимо в 1 stream.
+    * Пример вывода: "java8", "git", "mobile", "blogging", "coding", "writing", "streams", "ddd"
     */
 
     public static void main(String[] args) {
@@ -22,7 +24,11 @@ public class Solution {
     }
 
     private static List<String> allReadingTasks(List<Task> tasks) {
-        return null;
+
         // Ваш код здесь
+        return tasks.stream()
+                .flatMap(task -> task.getTags().stream())
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
